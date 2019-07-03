@@ -1,0 +1,24 @@
+
+
+View permissions:
+    mac: stat -f "%OLp" <file>
+    linux: stat --format '%a' <file>
+
+
+Changing permissions:
+    chmod u/g/o/a +/- r/w/x
+
+    u: user
+    g: group
+    o: other
+    a: all
+
+    +: give permissions
+    -: remove permissions
+
+    r: read
+    w: write
+    x: execute
+
+
+
