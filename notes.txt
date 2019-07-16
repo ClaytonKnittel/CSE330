@@ -16,9 +16,9 @@ Changing permissions:
     +: give permissions
     -: remove permissions
 
-    r: read
-    w: write
-    x: execute
+    r: read    (4)
+    w: write   (2)
+    x: execute (1)
 
 
 
