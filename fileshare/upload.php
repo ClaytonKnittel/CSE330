@@ -6,7 +6,8 @@ if (!isset($_GET['usr'])) {
 
 $login = $_GET['usr'];
 
-$h = fopen("/home/ClaytonKnittel/secure/module2/users.txt", "r");
+
+$h = fopen(dirname(dirname(dirname(__DIR__))) . "/secure/module2/users.txt", "r");
 
 $is_user = FALSE;
 
@@ -25,7 +26,8 @@ if (!$is_user) {
     exit(-2);
 }
 
-$path = "/home/ClaytonKnittel/secure/module2/users/" . $login . "/";
+
+$path = dirname(dirname(dirname(__DIR__))) . "/secure/module2/users/" . $login . "/"; 
 
 if (!is_dir($path)) {
     mkdir($path);
