@@ -1,38 +1,24 @@
 <?php
-
-if (!isset($_GET['usr'])) {
-    exit(-1);
-}
-
-$login = $_GET['usr'];
-
-
-$h = fopen(dirname(dirname(dirname(__DIR__))) . "/secure/module2/users.txt", "r");
-
-$is_user = FALSE;
-
-while( !feof($h) ){
-    $user = trim(fgets($h));
-	if ($user == $login) {
-        $is_user = TRUE;
-        break;
-    }
-}
-
-fclose($h);
-
-if (!$is_user) {
-    echo("you are not a user");
-    exit(-2);
-}
-
-
-$path = dirname(dirname(dirname(__DIR__))) . "/secure/module2/users/" . $login . "/"; 
-
-if (!is_dir($path)) {
-    mkdir($path);
-}
-
-
-
+session_start();
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Filesharing</title>
+</head>
+<body>
+
+<form enctype="multipart/form-data" action="uploading.php" method="POST">
+    <p>
+        <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
+        <label for="uploadfile_input">Choose a file to upload:</label> <input name="uploadedfile" type="file" id="uploadfile_input" />
+    </p>
+    <p>
+        <input type="submit" value="Upload File" />
+    </p>
+</form>
+
+</body>
+</html>
