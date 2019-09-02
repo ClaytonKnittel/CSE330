@@ -1,7 +1,8 @@
 <!doctype html>
-<header>
+<html lang="en-US">
+<head>
     <title>Calculator</title>
-</header>
+</head>
 
 <body>
 
