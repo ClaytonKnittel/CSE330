@@ -70,6 +70,8 @@ foreach ($files as $file){
 
 echo('</table>');
 
+echo('<a href="logout.php">Logout</a>');
+
 
 
 ?>
