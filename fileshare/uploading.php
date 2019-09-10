@@ -16,19 +16,8 @@ if( move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $full_path) ){
     
 }else{
     echo("could not upload file: " . $full_path);
+    echo("<br><a href=\"filesharing.php\">Back to main menu</a>");
 }
-
-
-
-
-//$location = $_FILES['uploadedfile']['tmp_name'];
-//echo ($location);
-
-
-
-
-
-
 
 
 ?>

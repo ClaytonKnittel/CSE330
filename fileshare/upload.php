@@ -8,6 +8,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Filesharing</title>
 </head>
+
 <body>
 
 <form enctype="multipart/form-data" action="uploading.php" method="POST">

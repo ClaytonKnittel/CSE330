@@ -23,6 +23,5 @@ while( !feof($file) ){
 }
 
 ?>
-
 </body>
 </html>

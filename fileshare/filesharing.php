@@ -16,7 +16,6 @@ if (isset($_GET['usr'])) {
 else if(isset($_SESSION['usr'])){
     $login = $_SESSION['usr'];
 }
-
 else{
     print('invalid redirect');
     exit(-1);
