@@ -17,6 +17,7 @@ $path = dirname(dirname(dirname(__DIR__))) . "/secure/module2/users/" . $usernam
 
 $file = fopen($path, 'r');
 
+// dump file contents
 while( !feof($file) ){
     $user = trim(fgets($file));
 	printf('%s<br>', $user);

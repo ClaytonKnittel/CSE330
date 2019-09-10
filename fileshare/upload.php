@@ -1,4 +1,5 @@
 <?php
+// keep session alive
 session_start();
 ?>
 

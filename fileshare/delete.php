@@ -3,6 +3,7 @@
 session_start();
 
 if (!isset($_SESSION['usr'])) {
+    // redirect back to login page if not coming from a login session
     header("Location: index.html");
     die();
 }
