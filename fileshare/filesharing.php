@@ -11,18 +11,19 @@
 // for tracking which user is signed in
 session_start();
 
-if (isset($_GET['usr'])) {
-    // coming from the login page, usr is set in get variable
-    $login = $_GET['usr'];
+if (isset($_POST['usr'])) {
+    // coming from the login page, usr is set in post variable
+    $login = $_POST['usr'];
 }
 else if(isset($_SESSION['usr'])){
     // coming from anywhere else, user is set as session variable
     $login = $_SESSION['usr'];
 }
 else{
-    // Should not be able to get here
-    print('invalid redirect');
-    exit(-1);
+    // If user tries to go straight to this page without logging in,
+    // send them back to the login page
+    header("Location: index.html");
+    die();
 }
 
 
@@ -43,6 +44,7 @@ while( !feof($h) ){
 fclose($h);
 
 if (!$is_user) {
+    // should not be able to get here
     echo("you are not a user");
     exit(-2);
 }
@@ -65,18 +67,18 @@ echo('<form action="upload.php"> <input type="submit" value="Upload a File" /> <
 // list of all uploaded files
 echo('Files that you have uploaded:<br>' );
 
-echo('<table style = "width: 100%"> <tr> <th>Table of files!</th> <th> Delete a file!</th> </tr>');
+echo('<br><table class="files" style = "width: 100%"> <tr> <th>Table of files</th> <th>Download</th> <th>Delete a file</th> </tr>');
 
 $files = array_slice(scandir($path), 2);
 
 foreach ($files as $file){
-    printf('<tr> <td align="center"><a href="viewing.php?file_to_open=%s">%s</a></td> <td align="center"><a href="delete.php?file=%s">Delete!</a></td></tr>', urlencode($file), $file, urlencode($file));
+    printf('<tr> <td align="center"><a href="viewing.php?file_to_open=%s">%s</a></td> <td align="center"><a href="download.php?file=%s">Download</a></td> <td align="center"><a href="delete.php?file=%s">Delete!</a></td></tr>', urlencode($file), $file, urlencode($file), urlencode($file));
 }
 
 echo('</table>');
 
 // link to logout
-echo('<a href="logout.php">Logout</a>');
+echo('<a class="logoutbtn" href="logout.php">Logout</a>');
 
 
 

@@ -1,6 +1,11 @@
 <?php
 // keep session alive
 session_start();
+
+if(!isset($_SESSION['usr'])){
+    header("Location: index.html");
+    die();
+}
 ?>
 
 <!DOCTYPE html>

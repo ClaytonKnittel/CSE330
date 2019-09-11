@@ -9,6 +9,11 @@
 <?php
 
 session_start();
+if(!isset($_SESSION['usr']) || !isset($_GET['file_to_open'])){
+    header("Location: index.html");
+    die();
+}
+
 $username = $_SESSION['usr'];
 
 $file_name = $_GET['file_to_open'];

@@ -1,6 +1,11 @@
 <?php
 
 session_start();
+if(!isset($_SESSION['usr'])){
+    header("Location: index.html");
+    die();
+}
+
 $username = $_SESSION['usr'];
 
 // Get the filename

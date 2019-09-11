@@ -3,14 +3,34 @@ body {
     color: rgb(110, 38, 11);
 }
 
-a:link a:visited {
-    color: #22ee22;
+a:link, a:visited {
+    color: #02008b;
 }
 
 a:hover {
-    color: #aabbcc;
+    color: #02a7bd;
 }
 
 a:active {
-    color: #ccbbaa;
+    color: #9fe201;
+}
+
+.login {
+    /* https://stackoverflow.com/questions/982054/how-to-center-an-element-in-the-middle-of-the-browser-window */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.logoutbtn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.files {
+    border: 1px solid black;
 }
