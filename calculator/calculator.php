@@ -53,25 +53,35 @@ if (isset($_GET['v1']) && isset($_GET['v2']) && isset($_GET['op'])) {
 ?>
 
 <form>
-    <input type="text" name="v1">
-    <select name="op">
+    <table>
+        <tr>
+        <th>
+            <input type="text" name="v1">
+        </th>
+        <th style="text-align: left;">
 <?php
     $array = array(
-        "+" => '<option value="+">+</option>',
-        "-" => '<option value="-">-</option>',
-        "*" => '<option value="*">*</option>',
-        "/" => '<option value="/">/</option>'
+        "+" => '<input type="radio" name="op" value="+">+<br>',
+        "-" => '<input type="radio" name="op" value="-">-<br>',
+        "*" => '<input type="radio" name="op" value="*">*<br>',
+        "/" => '<input type="radio" name="op" value="/">/<br>'
     );
     if (isset($_GET["op"])) {
-        $array[$_GET["op"]] = '<option value="' . $_GET["op"] . '" selected>' . $_GET["op"] . '</option>';
+        $array[$_GET["op"]] = '<input type="radio" name="op" value="' . $_GET["op"] . '" checked>' . $_GET["op"] . '<br>';
     }
     foreach ($array as $opt) {
         echo($opt);
     }
 ?>
-    </select>
-    <input type="text" name="v2">
-    <input type="submit" value="=">
+        </th>
+        <th>
+            <input type="text" name="v2">
+        </th>
+        <th>
+            <input type="submit" value="=">
+        </th>
+        </tr>
+    </table>
 </form>
 
 </body>
