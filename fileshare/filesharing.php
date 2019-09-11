@@ -11,9 +11,10 @@
 // for tracking which user is signed in
 session_start();
 
-if (isset($_POST['usr'])) {
+if (isset($_POST['usr']) && isset($_POST['pswd'])) {
     // coming from the login page, usr is set in post variable
     $login = $_POST['usr'];
+    $password_entered = $_POST['pswd'];
 }
 else if(isset($_SESSION['usr'])){
     // coming from anywhere else, user is set as session variable
@@ -29,24 +30,33 @@ else{
 
 
 // see if this is a valid user
-$h = fopen(dirname(dirname(dirname(__DIR__))) . "/secure/module2/users.txt", "r");
+$users = fopen(dirname(dirname(dirname(__DIR__))) . "/secure/module2/users.txt", "r");
+$passwords = fopen(dirname(dirname(dirname(__DIR__))) . "/secure/module2/passwords.txt", "r");
 
 $is_user = FALSE;
 
-while( !feof($h) ){
-    $user = trim(fgets($h));
-	if ($user == $login) {
+while( !feof($users) ){
+    $user = trim(fgets($users));
+    $password = trim(fgets($passwords));
+	if (strcasecmp($user, $login) == 0) {
+        if (isset($_POST['pswd']) &&
+            !password_verify($password_entered, $password)) {
+            // they entered the wrong password
+            header("Location: index.html");
+            die();
+        }
         $is_user = TRUE;
         break;
     }
 }
 
-fclose($h);
+fclose($passwords);
+fclose($users);
 
 if (!$is_user) {
     // should not be able to get here
-    echo("you are not a user");
-    exit(-2);
+    header("Location: index.html");
+    die();
 }
 else {
     $_SESSION['usr'] = $login;
